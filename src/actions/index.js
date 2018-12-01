@@ -1,6 +1,6 @@
 /* Action Creators */
 
-const actions = {
+export default {
   swipe: isLike => {
     return {
       type: "SWIPE_ACTION",
@@ -8,5 +8,3 @@ const actions = {
     };
   }
 };
-
-export default actions;
