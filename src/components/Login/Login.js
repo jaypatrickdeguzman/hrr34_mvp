@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import login from "../../lib/signin";
 
 const Login = ({ setUser, goToSignUp }) => {
@@ -15,17 +14,21 @@ const Login = ({ setUser, goToSignUp }) => {
     setPassword(e.target.value);
   }
 
-  async function onSignInSubmit(e) {
+  function onSignInSubmit(e) {
     e.preventDefault();
-    const resp = await login.get("/login", {
-      params: { userName, password }
-    });
-    resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
+    login
+      .get("/login", {
+        body: { userName, password }
+      })
+      .then(resp => {
+        console.log(resp);
+      });
+    // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
   }
 
   return (
     <React.Fragment>
-      <main className="pa4 black-80">
+      <main className="pa4 black-80 dark-blue">
         <form className="measure center">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f3 fw6 ph0 mh0">Sign In</legend>
@@ -34,7 +37,7 @@ const Login = ({ setUser, goToSignUp }) => {
               <input
                 value={userName}
                 onChange={handleUsernameChange}
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
               />
             </div>
             <div className="mt3">
@@ -42,8 +45,7 @@ const Login = ({ setUser, goToSignUp }) => {
               <input
                 value={password}
                 onChange={handlePasswordChange}
-                type="password"
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
               />
             </div>
             <br />
@@ -51,7 +53,7 @@ const Login = ({ setUser, goToSignUp }) => {
             <div className="">
               <a
                 onClick={onSignInSubmit}
-                className="f6 link dim ba ph3 pv2 mb2 dib black grow pointer"
+                className="f6 link dim ba ph3 pv2 mb2 dib black grow pointer dark-blue"
                 href="#0"
               >
                 Sign In
@@ -59,7 +61,7 @@ const Login = ({ setUser, goToSignUp }) => {
             </div>
           </fieldset>
           <div className="1h-copy mt2">
-            <a href="#0" className="f5 link dim black db">
+            <a href="#0" className="f5 link dim black db dark-blue">
               Sign Up
             </a>
           </div>
