@@ -2,27 +2,19 @@ import React, { useState } from "react";
 import login from "../../lib/signin";
 
 const Login = ({ setUser, goToSignUp }) => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [isUserExist, setIsUserExist] = useState("true");
-
-  function handleUsernameChange(e) {
-    setUserName(e.target.value);
-  }
-
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  const username = useFormInput("");
+  const password = useFormInput("");
 
   function onSignInSubmit(e) {
     e.preventDefault();
-    login
-      .get("/login", {
-        body: { userName, password }
-      })
-      .then(resp => {
-        console.log(resp);
-      });
+    //   login
+    //     .get("/login", {
+    //       body: { userName, password }
+    //     })
+    //     .then(resp => {
+    //       console.log(resp);
+    //     });
+    console.log(`Username: ${username.value}, Password: ${password.value}`);
     // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
   }
 
@@ -35,16 +27,16 @@ const Login = ({ setUser, goToSignUp }) => {
             <div className="mt3">
               <label className="db fw6 lh-copy f6">Username</label>
               <input
-                value={userName}
-                onChange={handleUsernameChange}
+                value={username.value}
+                onChange={username.handleChange}
                 className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
               />
             </div>
             <div className="mt3">
               <label className="db fw6 lh-copy f6">Password</label>
               <input
-                value={password}
-                onChange={handlePasswordChange}
+                value={password.value}
+                onChange={password.handleChange}
                 className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
               />
             </div>
@@ -71,4 +63,12 @@ const Login = ({ setUser, goToSignUp }) => {
   );
 };
 
-export default Login;
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
+  return { value: value, handleChange: handleChange };
+}
+
+export default React.memo(Login);

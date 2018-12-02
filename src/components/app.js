@@ -1,18 +1,17 @@
 import React, { createContext } from "react";
 import { useState, useEffect } from "react";
-
 import Container from "./Container";
 import Login from "./Login/Login";
 
 export const UserContext = createContext({
   _id: "",
-  description: String,
-  location: String,
-  name: String,
-  age: Number,
-  sex: String,
-  preference: String,
-  likes: Number
+  description: "",
+  location: "",
+  name: "",
+  age: "",
+  sex: "",
+  preference: "",
+  likes: ""
 });
 
 const App = () => {
