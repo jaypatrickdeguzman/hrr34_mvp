@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SignInPage from "./SignInPage/SignIn";
 
 class App extends Component {
   render() {
