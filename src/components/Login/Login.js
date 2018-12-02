@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import login from "../../lib/signin";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, goToSignUp }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [isUserExist, setIsUserExist] = useState("true");
 
   function handleUsernameChange(e) {
     setUserName(e.target.value);
@@ -11,6 +13,14 @@ const Login = ({ setUser }) => {
 
   function handlePasswordChange(e) {
     setPassword(e.target.value);
+  }
+
+  async function onSignInSubmit(e) {
+    e.preventDefault();
+    const resp = await login.get("/login", {
+      params: { userName, password }
+    });
+    resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
   }
 
   return (
@@ -32,19 +42,23 @@ const Login = ({ setUser }) => {
               <input
                 value={password}
                 onChange={handlePasswordChange}
+                type="password"
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
               />
             </div>
             <br />
             <br />
             <div className="">
-              <input
-                className="b ph1 pv2 input-reset ba b--black bg-transparent grow pointer f5 dib"
-                value="Sign in"
-              />
+              <a
+                onClick={onSignInSubmit}
+                className="f6 link dim ba ph3 pv2 mb2 dib black grow pointer"
+                href="#0"
+              >
+                Sign In
+              </a>
             </div>
           </fieldset>
-          <div class="1h-copy mt2">
+          <div className="1h-copy mt2">
             <a href="#0" className="f5 link dim black db">
               Sign Up
             </a>
