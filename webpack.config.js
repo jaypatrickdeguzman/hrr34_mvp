@@ -42,5 +42,10 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: __dirname + "src/public"
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
+  devServer: {
+    contentBase: "./src/dist",
+    hot: true
   }
 };
