@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-const data = `tableHere`;
-
-const connection = `mongodb://localhost/${data}`;
+const connection = `mongodb://localhost/Profile`;
 
 const db = mongoose.connect(
   connection,

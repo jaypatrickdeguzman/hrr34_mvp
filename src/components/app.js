@@ -1,16 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import SignInPage from "./SignInPage/SignIn";
+import Container from "./Container";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <p>Hello Rohan</p>
-        <p>Hello Jay</p>
-        <p>Hello Jackie</p>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <React.Fragment>
+      <Container />
+    </React.Fragment>
+  );
+};
 
 export default App;
