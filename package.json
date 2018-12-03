@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev-build": "webpack --mode=development",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "db:seed": "node ./server/seeding/seed.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
