@@ -3,6 +3,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 
+const controller = require("./controller");
+
 const router = express.Router();
 
 router.use(cors());
@@ -15,15 +17,40 @@ router.use(morgan("dev"));
 router.use(express.static(path.join(__dirname, "../src/dist")));
 
 router.get("api/login", (req, res) => {
-  console.log("Post");
+  controller
+    .getUser(req.body)
+    .then(user => {
+      console.log(user);
+    })
+    .catch(err => {
+      console.log(er);
+    });
 });
 
 router.post("api/newuser", (req, res) => {
-  console.log("Post");
+  controller
+    .createUser(req.body)
+    .then(succ => {
+      console.log(succ);
+    })
+    .catch(err => {
+      console.log(er);
+    });
 });
 
 router.post("api/likeuser", (req, res) => {
-  console.log("Like");
+  controller
+    .likeUser(req.body)
+    .then(succ => {
+      console.log(succ);
+    })
+    .catch(err => {
+      console.log(er);
+    });
+});
+
+router.delete("api/deleteuser", (req, res) => {
+  console.log("Delete User");
 });
 
 module.exports = router;
