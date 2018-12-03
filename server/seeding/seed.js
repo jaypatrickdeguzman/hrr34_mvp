@@ -13,6 +13,7 @@ function createProfile() {
     count++;
     return {
       _id: id.toString(),
+      avatar: faker.image.avatar(),
       username: faker.internet.userName(),
       password: faker.internet.password(),
       description: faker.lorem.sentence(),

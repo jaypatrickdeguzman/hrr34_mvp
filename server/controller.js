@@ -15,7 +15,11 @@ var Tank = connection.model('Tank', yourSchema);
  */
 
 module.exports = {
-  likeUser(user) {},
+  likeUser({ _id, like }) {
+    let query = { _id: _id };
+    let newLikeCount = like + 1;
+    return await Profile.findOneAndUpdate(query, {likes: newLikeCount})
+  },
   async createUser(user) {
     let newUser = new Profile({
       username: user.username,
