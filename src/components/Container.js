@@ -1,9 +1,5 @@
 import React from "react";
 
-const style = {
-  background: " center"
-};
-
 const Container = ({ children }) => (
   <React.Fragment>
     <article className="mw5 mw6-ns center ba pv4 pt4 shadow-5-l bg-washed-red">
