@@ -1,7 +1,8 @@
 import React, { createContext } from "react";
 import { useState, useEffect } from "react";
 import Container from "./Container";
-import Login from "./Login/Login";
+import Login from "./Login";
+import SignUp from "./SignUp";
 
 export const UserContext = createContext({
   _id: "",
@@ -11,14 +12,14 @@ export const UserContext = createContext({
   age: "",
   sex: "",
   preference: "",
-  likes: ""
+  likes: 0
 });
 
 const App = () => {
   return (
     <div className="pa5">
       <Container>
-        <Login />
+        <SignUp />
       </Container>
     </div>
   );

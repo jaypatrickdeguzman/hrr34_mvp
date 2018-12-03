@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import login from "../../lib/signin";
+import formInput from "./hooks/FormInput";
+import login from "../lib/signin";
 
-const Login = ({ setUser, goToSignUp }) => {
-  const username = useFormInput("");
-  const password = useFormInput("");
+function Login({ setUser, goToSignUp }) {
+  const username = formInput("");
+  const password = formInput("");
 
   function onSignInSubmit(e) {
     e.preventDefault();
@@ -53,7 +54,11 @@ const Login = ({ setUser, goToSignUp }) => {
             </div>
           </fieldset>
           <div className="1h-copy mt2">
-            <a href="#0" className="f5 link dim black db dark-blue">
+            <a
+              onClick={goToSignUp}
+              href="#0"
+              className="f5 link dim black db dark-blue"
+            >
               Sign Up
             </a>
           </div>
@@ -61,14 +66,6 @@ const Login = ({ setUser, goToSignUp }) => {
       </main>
     </React.Fragment>
   );
-};
-
-function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-  return { value: value, handleChange: handleChange };
 }
 
 export default React.memo(Login);
