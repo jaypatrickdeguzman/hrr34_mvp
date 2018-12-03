@@ -50,7 +50,14 @@ router.post("api/likeuser", (req, res) => {
 });
 
 router.delete("api/deleteuser", (req, res) => {
-  console.log("Delete User");
+  controller
+    .deleteUser(req.body)
+    .then(succ => {
+      console.log(succ);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
