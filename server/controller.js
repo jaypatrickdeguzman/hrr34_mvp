@@ -15,13 +15,15 @@ var Tank = connection.model('Tank', yourSchema);
  */
 
 module.exports = {
-  likeUser({ _id, like }) {
+  async likeUser({ _id, like }) {
     let query = { _id: _id };
     let newLikeCount = like + 1;
-    return await Profile.findOneAndUpdate(query, {likes: newLikeCount})
+    return await Profile.findOneAndUpdate(query, { likes: newLikeCount });
   },
   async createUser(user) {
+    // working
     let newUser = new Profile({
+      _id: new mongoose.Types.ObjectId(),
       username: user.username,
       password: user.password,
       description: user.description,
@@ -34,6 +36,45 @@ module.exports = {
     return await newUser.save();
   },
   async getUser({ username, password }) {
+    // working
     return await Profile.find({ username, password });
+  },
+  async deleteUser({ _id }) {
+    return await Profile.deleteOne({ _id: _id });
   }
 };
+
+// function testFunc() {
+//   // Profile.findOne({ _id: 100 }).then(user => {
+//   //   console.log(user);
+//   // });
+//   // let newUser = new Profile({
+//   //   _id: new mongoose.Types.ObjectId(),
+//   //   username: "mooo",
+//   //   password: "mooopw",
+//   //   description: "I like things",
+//   //   location: "CA",
+//   //   name: "moo-username",
+//   //   age: 27,
+//   //   preference: "Male",
+//   //   likes: 27
+//   // });
+//   // newUser.save().then(user => {
+//   //   console.log(user);
+//   // });
+//   // Profile.find({ username: "mooo", password: "mooopw" }).then(x => {
+//   //   console.log(x);
+//   // });
+
+//   // let query = { _id: "5c059624a4cb661606634e51" };
+//   // let newLikeCount = 29;
+//   // Profile.findOneAndUpdate(query, { likes: newLikeCount }).then(x => {
+//   //   console.log(x);
+//   // });
+
+//   Profile.findOne({ _id: "5c059624a4cb661606634e51" }).then(x => {
+//     console.log(x);
+//   });
+// }
+
+// testFunc();
