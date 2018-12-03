@@ -34,7 +34,7 @@ router.post("api/newuser", (req, res) => {
       console.log(succ);
     })
     .catch(err => {
-      console.log(er);
+      console.log(err);
     });
 });
 
@@ -45,7 +45,7 @@ router.post("api/likeuser", (req, res) => {
       console.log(succ);
     })
     .catch(err => {
-      console.log(er);
+      console.log(err);
     });
 });
 

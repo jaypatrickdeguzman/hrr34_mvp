@@ -15,6 +15,7 @@ var Tank = connection.model('Tank', yourSchema);
  */
 
 module.exports = {
+  // working
   async likeUser({ _id, like }) {
     let query = { _id: _id };
     let newLikeCount = like + 1;
@@ -40,6 +41,7 @@ module.exports = {
     return await Profile.find({ username, password });
   },
   async deleteUser({ _id }) {
+    // working
     return await Profile.deleteOne({ _id: _id });
   }
 };
