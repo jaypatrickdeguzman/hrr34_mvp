@@ -15,7 +15,9 @@ export const UserContext = createContext({
   likes: 0
 });
 
-const App = () => {
+function App() {
+  const [appState, setAppState] = useState("Signin");
+
   return (
     <div className="pa5">
       <Container>
@@ -23,6 +25,8 @@ const App = () => {
       </Container>
     </div>
   );
-};
+}
+
+function renderApp(state) {}
 
 export default App;
