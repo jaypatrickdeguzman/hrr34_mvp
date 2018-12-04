@@ -29,7 +29,7 @@ function returnForm({
               <input
                 value={state[index].value}
                 onChange={state[index].handleChange}
-                className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
+                className="pa2 input-reset ba bg-transparent hover-bg-washed-red w-100"
               />
             </div>
             <br />
