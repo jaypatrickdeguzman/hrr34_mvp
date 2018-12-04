@@ -15,14 +15,6 @@ app.use(bodyParser());
 /*                  API                   */
 /* -------------------------------------- */
 
-// app.get("*.js", function(req, res, next) {
-//   // req.url = req.url + ".gz";
-//   // console.log(req.url);
-//   // res.set("Content-Encoding", "gzip");
-//   res.set("Content-Type", "application/javascript");
-//   next();
-// });
-
 app.use(express.static(path.join(__dirname, "../src/dist")));
 
 app.get("/api/getmatches", (req, res) => {
