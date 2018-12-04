@@ -14,7 +14,6 @@ function Profile({ profile, setAppState }) {
       <h2 className="f3 gray fw2 ttu tracked">{profile.location}</h2>
       <h1 className="f3 gray fw2 ttu tracked">{profile.age}</h1>
       <hr className="mw5 bb bw1 b--black-10" />
-      <br />
       <h2 className="f2 gray fw1 dib w-90 ttu tracked i">{`"${
         profile.description
       }"`}</h2>
