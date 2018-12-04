@@ -37,10 +37,17 @@ module.exports = {
     });
     return await newUser.save();
   },
-  async getUser({ username, password }) {
+  async getUser({ userName, password }) {
     // working
-    console.log(username, " ", password);
-    return await Profile.findOne({ username, password });
+    console.log(userName, " ", password);
+    return await Profile.findOne({ username: userName, password });
+  },
+  async getMatches(cb) {
+    return await Profile.findRandom({}, {}, { limit: 25 }, (err, results) => {
+      if (!err) {
+        cb(err, results);
+      }
+    });
   },
   async deleteUser({ _id }) {
     // working

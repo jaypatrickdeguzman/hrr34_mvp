@@ -5,6 +5,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Profile from "./Profile";
 import UserLike from "./UserLike";
+import networkReq from "../lib/signin";
 
 export const UserContext = createContext({
   _id: "",
@@ -28,6 +29,7 @@ function App() {
     location: "",
     description: ""
   });
+  const [currentMatchIndex, setMatchIndex] = useState(0);
   const [currentMatchProfile, setMatchProfile] = useState({
     _id: "",
     avatar: "",
@@ -39,17 +41,47 @@ function App() {
     description: ""
   });
 
-  // Pretty hacky
-  useEffect(() => {}, [profiles.length]);
+  // Pretty hackyy
+  useEffect(
+    () => {
+      networkReq.get("/getmatches").then(resp => {
+        // console.log(resp.data);
+        setProfiles(resp.data);
+      });
+    },
+    [profiles.length]
+  );
 
   return (
     <div className="pa3">
-      <Container>{renderApp(appState, setAppState, setUserProfile)}</Container>
+      <Container>
+        {renderApp(
+          appState,
+          setAppState,
+          userProfile,
+          setUserProfile,
+          profiles,
+          currentMatchIndex,
+          setMatchIndex,
+          currentMatchProfile,
+          setMatchProfile
+        )}
+      </Container>
     </div>
   );
 }
 
-function renderApp(state, setAppState, setUserProfile) {
+function renderApp(
+  state,
+  setAppState,
+  userProfile,
+  setUserProfile,
+  profiles,
+  currentMatchIndex,
+  setMatchIndex,
+  currentMatchProfile,
+  setMatchProfile
+) {
   switch (state) {
     case "SignUp":
       return (
@@ -66,7 +98,15 @@ function renderApp(state, setAppState, setUserProfile) {
         <Profile setAppState={setAppState} profile={currentMatchProfile} />
       );
     case "UserLikePage":
-      return <UserLike setAppState={setAppState} />;
+      return (
+        <UserLike
+          setAppState={setAppState}
+          profiles={profiles}
+          index={currentMatchIndex}
+          setMatchIndex={setMatchIndex}
+          setMatchProfile={setMatchProfile}
+        />
+      );
       return;
     default:
       console.error("Something is fucked...");

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const random = require("mongoose-simple-random");
 
 const profileSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -11,5 +12,6 @@ const profileSchema = new mongoose.Schema({
   age: Number,
   likes: Number
 });
+profileSchema.plugin(random);
 
 module.exports = mongoose.model("Profile", profileSchema);

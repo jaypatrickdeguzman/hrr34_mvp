@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import formInput from "./hooks/FormInput";
 import login from "../lib/signin";
 
-function Login({ setUser, setAppState }) {
+function Login({ setUserProfile, setAppState }) {
   const username = formInput("");
   const password = formInput("");
 
@@ -13,7 +13,8 @@ function Login({ setUser, setAppState }) {
         body: { userName: username.value, password: password.value }
       })
       .then(resp => {
-        console.log(resp);
+        setUserProfile(resp.data);
+        setAppState("UserLikePage");
       });
     console.log(`Username: ${username.value}, Password: ${password.value}`);
     // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);

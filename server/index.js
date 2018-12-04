@@ -17,15 +17,22 @@ app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, "../src/dist")));
 
+app.get("/api/getmatches", (req, res) => {
+  controller.getMatches((err, results) => {
+    res.send(results);
+  });
+});
+
 app.post("/api/login", (req, res) => {
-  console.log(req.body);
+  console.log(req.body.body);
   controller
-    .getUser(req.body)
+    .getUser(req.body.body)
     .then(user => {
-      console.log(user);
+      console.log("user: ", user);
+      res.send(user);
     })
     .catch(err => {
-      console.log(er);
+      console.log(err);
     });
 });
 
@@ -34,7 +41,11 @@ app.post("/api/newuser", (req, res) => {
   controller
     .createUser(req.body.body)
     .then(succ => {
-      controller.getUser(req.body.body).then(succ => {
+      const user = {
+        userName: req.body.body.username,
+        password: req.body.body.password
+      };
+      controller.getUser(user).then(succ => {
         res.send(succ);
       });
     })
