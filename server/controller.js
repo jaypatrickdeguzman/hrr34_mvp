@@ -43,7 +43,7 @@ module.exports = {
     return await Profile.findOne({ username: userName, password });
   },
   async getMatches(cb) {
-    return await Profile.findRandom({}, {}, { limit: 25 }, (err, results) => {
+    return await Profile.findRandom({}, {}, { limit: 100 }, (err, results) => {
       if (!err) {
         cb(err, results);
       }
