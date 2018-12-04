@@ -31,7 +31,7 @@ function Login({ setUserProfile, setAppState }) {
               <input
                 value={username.value}
                 onChange={username.handleChange}
-                className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
+                className="pa2 input-reset ba bg-transparent hover-bg-washed-red w-100"
               />
             </div>
             <div className="mt3">
@@ -39,7 +39,7 @@ function Login({ setUserProfile, setAppState }) {
               <input
                 value={password.value}
                 onChange={password.handleChange}
-                className="pa2 input-reset ba bg-transparent hover-bg-washed-red hover-white w-100"
+                className="pa2 input-reset ba bg-transparent hover-bg-washed-red w-100"
               />
             </div>
             <br />
