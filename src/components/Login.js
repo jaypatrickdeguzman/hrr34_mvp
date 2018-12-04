@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import formInput from "./hooks/FormInput";
 import login from "../lib/signin";
 
-function Login({ setUser, goToSignUp }) {
+function Login({ setUser, setAppState }) {
   const username = formInput("");
   const password = formInput("");
 
@@ -24,9 +24,9 @@ function Login({ setUser, goToSignUp }) {
       <main className="pa4 black-80 dark-blue">
         <form className="measure center">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-            <legend className="f3 fw6 ph0 mh0">Sign In</legend>
+            <legend className="f2 fw6 ph0 mh0">Sign In</legend>
             <div className="mt3">
-              <label className="db fw6 lh-copy f6">Username</label>
+              <label className="db fw6 lh-copy f4">Username</label>
               <input
                 value={username.value}
                 onChange={username.handleChange}
@@ -34,7 +34,7 @@ function Login({ setUser, goToSignUp }) {
               />
             </div>
             <div className="mt3">
-              <label className="db fw6 lh-copy f6">Password</label>
+              <label className="db fw6 lh-copy f4">Password</label>
               <input
                 value={password.value}
                 onChange={password.handleChange}
@@ -46,7 +46,7 @@ function Login({ setUser, goToSignUp }) {
             <div className="">
               <a
                 onClick={onSignInSubmit}
-                className="f6 link dim ba ph3 pv2 mb2 dib black grow pointer dark-blue"
+                className="f4 link dim ba br4 ph3 pv2 mb2 dib black grow pointer dark-blue"
                 href="#0"
               >
                 Sign In
@@ -55,9 +55,11 @@ function Login({ setUser, goToSignUp }) {
           </fieldset>
           <div className="1h-copy mt2">
             <a
-              onClick={goToSignUp}
+              onClick={() => {
+                setAppState("SignUp");
+              }}
               href="#0"
-              className="f5 link dim black db dark-blue"
+              className="f4 link dim black db dark-blue"
             >
               Sign Up
             </a>
