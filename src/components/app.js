@@ -1,9 +1,19 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  lazy,
+  Suspense
+} from "react";
 import Container from "./Container";
-import Login from "./Login";
-import SignUp from "./SignUp";
+const Login = lazy(() => import("./Login"));
+const SignUp = lazy(() => import("./SignUp"));
+// const Profile = lazy(() => {
+//   import("./Profile");
+// });
 import Profile from "./Profile";
-import UserLike from "./UserLike";
+const UserLike = lazy(() => import("./UserLike"));
+import Loader from "./Loader";
 import networkReq from "../lib/signin";
 
 export const UserContext = createContext({
@@ -84,27 +94,39 @@ function renderApp(
   switch (state) {
     case "SignUp":
       return (
-        <SignUp setAppState={setAppState} setUserProfile={setUserProfile} />
+        <Suspense fallback={<Loader />}>
+          <SignUp setAppState={setAppState} setUserProfile={setUserProfile} />
+        </Suspense>
       );
     case "Login":
       return (
-        <Login setAppState={setAppState} setUserProfile={setUserProfile} />
+        <Suspense fallback={<Loader />}>
+          <Login setAppState={setAppState} setUserProfile={setUserProfile} />
+        </Suspense>
       );
     case "UserProfile":
-      return <Profile setAppState={setAppState} profile={userProfile} />;
+      return (
+        <Suspense fallback={<Loader />}>
+          <Profile setAppState={setAppState} profile={userProfile} />
+        </Suspense>
+      );
     case "MatchProfile":
       return (
-        <Profile setAppState={setAppState} profile={currentMatchProfile} />
+        <Suspense fallback={<Loader />}>
+          <Profile setAppState={setAppState} profile={currentMatchProfile} />
+        </Suspense>
       );
     case "UserLikePage":
       return (
-        <UserLike
-          setAppState={setAppState}
-          profiles={profiles}
-          index={currentMatchIndex}
-          setMatchIndex={setMatchIndex}
-          setMatchProfile={setMatchProfile}
-        />
+        <Suspense fallback={<Loader />}>
+          <UserLike
+            setAppState={setAppState}
+            profiles={profiles}
+            index={currentMatchIndex}
+            setMatchIndex={setMatchIndex}
+            setMatchProfile={setMatchProfile}
+          />
+        </Suspense>
       );
       return;
     default:

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  "mongodb://localhost/Profile",
+  "mongodb://jay:password99@ds225294.mlab.com:25294/jay-hrr34-mvp",
   { useNewUrlParser: true }
 );
 

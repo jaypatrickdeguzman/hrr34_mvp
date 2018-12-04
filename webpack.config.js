@@ -1,26 +1,27 @@
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/dist/index.html",
       filename: "./index.html"
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
+      }
+    }),
+    new UglifyJsPlugin({
+      sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false // remove all comments
+        }
+      }
     })
-    // new webpack.DefinePlugin({
-    //   "process.env": {
-    //     NODE_ENV: JSON.stringify("production")
-    //   }
-    // })
-    // new UglifyJsPlugin({
-    //   sourceMap: true,
-    //   uglifyOptions: {
-    //     output: {
-    //       comments: false // remove all comments
-    //     }
-    //   }
-    // })
   ],
   entry: {
     bundle: "./src/index.js"

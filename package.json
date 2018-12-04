@@ -10,8 +10,9 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev-build": "webpack --mode=development",
+    "build": "webpack --mode=production",
     "start": "nodemon server/index.js",
-    "db:seed": "node ./server/seeding/seed.js"
+    "db:seed": "node --max-old-space-size=8192 ./server/seeding/seed.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
@@ -35,6 +36,7 @@
     "redux": "^4.0.1"
   },
   "devDependencies": {
+    "fast-csv": "^2.4.1",
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
