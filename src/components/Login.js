@@ -13,9 +13,10 @@ function Login({ setUserProfile, setAppState }) {
         body: { userName: username.value, password: password.value }
       })
       .then(resp => {
-        console.log(resp.data);
-        setUserProfile(resp.data);
-        setAppState("UserLikePage");
+        if (resp.data) {
+          setUserProfile(resp.data);
+          setAppState("UserLikePage");
+        }
       });
     console.log(`Username: ${username.value}, Password: ${password.value}`);
     // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
