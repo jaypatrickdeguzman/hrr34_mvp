@@ -13,6 +13,7 @@ function Login({ setUserProfile, setAppState }) {
         body: { userName: username.value, password: password.value }
       })
       .then(resp => {
+        console.log(resp.data);
         setUserProfile(resp.data);
         setAppState("UserLikePage");
       });
