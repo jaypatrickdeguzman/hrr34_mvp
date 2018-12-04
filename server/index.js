@@ -8,7 +8,7 @@ const controller = require("./controller");
 
 const app = express();
 app.use(cors());
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(bodyParser());
 
 /* -------------------------------------- */
