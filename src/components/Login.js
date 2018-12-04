@@ -50,7 +50,6 @@ function Login({ setUserProfile, setAppState }) {
               <a
                 onClick={onSignInSubmit}
                 className="f4 link dim ba br4 ph3 pv2 mb2 dib black grow pointer dark-blue"
-                href="#0"
               >
                 Sign In
               </a>
@@ -61,7 +60,6 @@ function Login({ setUserProfile, setAppState }) {
               onClick={() => {
                 setAppState("SignUp");
               }}
-              href="#0"
               className="f4 link dim black db dark-blue"
             >
               Sign Up

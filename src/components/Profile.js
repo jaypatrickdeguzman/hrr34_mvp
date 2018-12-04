@@ -23,7 +23,6 @@ function Profile({ profile, setAppState }) {
           setAppState("UserLikePage");
         }}
         className="f3 grow link dim br4 ba ph4 pv2 mb2 mid-gray"
-        href="#0"
       >
         Back
       </a>

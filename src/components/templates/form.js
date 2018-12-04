@@ -42,7 +42,6 @@ function returnForm({
                     setIndex(index - 1);
                   }}
                   className="f6 link dim ba br4 ph3 pv2 mb2 dib black grow pointer dark-blue"
-                  href="#0"
                 >
                   Previous
                 </a>
@@ -54,7 +53,6 @@ function returnForm({
                   setIndex(index + 1);
                 }}
                 className="f6 link dim ba br4 ph3 pv2 mb2 dib black grow pointer dark-blue"
-                href="#0"
               >
                 Next
               </a>
@@ -93,7 +91,6 @@ function summary(state, value, setAppState, setUserProfile) {
                   signUp(e, state, setAppState, setUserProfile);
                 }}
                 className="f4 link dim ba br4 ph3 pv2 center mb2 dib black grow pointer dark-blue"
-                href="#0"
               >
                 Sign Up
               </a>
