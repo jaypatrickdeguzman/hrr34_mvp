@@ -8,13 +8,13 @@ function Login({ setUser, setAppState }) {
 
   function onSignInSubmit(e) {
     e.preventDefault();
-    //   login
-    //     .get("/login", {
-    //       body: { userName, password }
-    //     })
-    //     .then(resp => {
-    //       console.log(resp);
-    //     });
+    login
+      .get("/login", {
+        body: { userName: username.value, password: password.value }
+      })
+      .then(resp => {
+        console.log(resp);
+      });
     console.log(`Username: ${username.value}, Password: ${password.value}`);
     // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
   }

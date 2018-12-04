@@ -20,6 +20,9 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [currentProfile, setNextCurrentProfile] = useState({});
 
+  // Pretty hacky
+  useEffect(() => {}, [profiles.length]);
+
   return (
     <div className="pa3">
       <Container>{renderApp(appState, setAppState)}</Container>
