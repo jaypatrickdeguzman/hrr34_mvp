@@ -19,6 +19,7 @@ function App() {
   const [appState, setAppState] = useState("Login");
   const [profiles, setProfiles] = useState([]);
   const [currentProfile, setNextCurrentProfile] = useState({});
+
   return (
     <div className="pa3">
       <Container>{renderApp(appState, setAppState)}</Container>

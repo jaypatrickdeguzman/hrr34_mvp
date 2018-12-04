@@ -17,7 +17,7 @@ function Profile({ avatar, username, description, location, name, age }) {
       <br />
       <h2 className="f2 gray fw2 ttu tracked i">"In this small blue dot..."</h2>
       <br />
-      <a className="f3 grow link dim br4 ba ph3 pv2 mb2 dib mid-gray" href="#0">
+      <a className="f3 grow link dim br4 ba ph4 pv2 mb2 mid-gray" href="#0">
         Back
       </a>
     </header>
