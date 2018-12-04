@@ -27,6 +27,7 @@ function returnForm({
             <div className="mt3">
               <label className="db fw6 lh-copy f6">{value[index].label}</label>
               <input
+                type={index === 3 ? "number" : "text"}
                 value={state[index].value}
                 onChange={state[index].handleChange}
                 className="pa2 input-reset ba bg-transparent hover-bg-washed-red w-100"
