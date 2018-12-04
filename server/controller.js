@@ -23,22 +23,24 @@ module.exports = {
   },
   async createUser(user) {
     // working
+    console.log("User: ", user);
     let newUser = new Profile({
       _id: new mongoose.Types.ObjectId(),
+      avatar: user.avatar,
       username: user.username,
       password: user.password,
       description: user.description,
       location: user.location,
       name: user.name,
       age: user.age,
-      preference: user.preference,
       likes: 0
     });
     return await newUser.save();
   },
   async getUser({ username, password }) {
     // working
-    return await Profile.find({ username, password });
+    console.log(username, " ", password);
+    return await Profile.findOne({ username, password });
   },
   async deleteUser({ _id }) {
     // working

@@ -1,12 +1,21 @@
 import React from "react";
+import networkReq from "../../lib/signin";
+import Faker from "faker/locale/en";
 
 function Form(props) {
   return returnForm(props);
 }
 
-function returnForm({ value, state, index, setIndex }) {
+function returnForm({
+  value,
+  state,
+  index,
+  setIndex,
+  setAppState,
+  setUserProfile
+}) {
   return index > 5 ? (
-    summary(state, value)
+    summary(state, value, setAppState, setUserProfile)
   ) : (
     <React.Fragment>
       <main className="pa4 black-80 dark-blue">
@@ -56,7 +65,7 @@ function returnForm({ value, state, index, setIndex }) {
   );
 }
 
-function summary(state, value) {
+function summary(state, value, setAppState, setUserProfile) {
   return (
     <React.Fragment>
       <main className="pa3 black-80 dark-blue">
@@ -79,9 +88,9 @@ function summary(state, value) {
           <fieldset className="ba b--transparent ph0 mh0">
             <legend className="f2 fw6 ph0 mh0 center">
               <a
-                // onClick={() => {
-                //   setIndex(index + 1);
-                // }}
+                onClick={e => {
+                  signUp(e, state, setAppState, setUserProfile);
+                }}
                 className="f4 link dim ba br4 ph3 pv2 center mb2 dib black grow pointer dark-blue"
                 href="#0"
               >
@@ -93,6 +102,27 @@ function summary(state, value) {
       </main>
     </React.Fragment>
   );
+}
+
+function signUp(e, payload, setAppState, setUserProfile) {
+  e.preventDefault();
+  const load = {
+    avatar: Faker.image.avatar(),
+    username: payload[0].value,
+    password: payload[1].value,
+    name: payload[2].value,
+    age: payload[3].value,
+    location: payload[4].value,
+    description: payload[5].value
+  };
+  networkReq
+    .post("/newuser", {
+      body: load
+    })
+    .then(resp => {
+      setUserProfile(resp.data);
+      setAppState("UserLikePage");
+    });
 }
 
 /*

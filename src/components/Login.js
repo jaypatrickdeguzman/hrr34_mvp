@@ -9,7 +9,7 @@ function Login({ setUser, setAppState }) {
   function onSignInSubmit(e) {
     e.preventDefault();
     login
-      .get("/login", {
+      .post("/login", {
         body: { userName: username.value, password: password.value }
       })
       .then(resp => {

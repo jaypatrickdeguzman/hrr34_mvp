@@ -9,6 +9,7 @@ const controller = require("./controller");
 const router = express.Router();
 
 router.use(cors());
+
 router.use(morgan("dev"));
 router.use(bodyParser());
 

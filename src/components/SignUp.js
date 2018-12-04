@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import formInput from "./hooks/FormInput";
 import Form from "./templates/form";
 
-function SignUp() {
+function SignUp({ setAppState, setUserProfile }) {
   const [index, setIndex] = useState(0);
   const { value, state } = useSignUpState(index);
-  return <Form value={value} state={state} index={index} setIndex={setIndex} />;
+  return (
+    <Form
+      value={value}
+      state={state}
+      index={index}
+      setIndex={setIndex}
+      setAppState={setAppState}
+      setUserProfile={setUserProfile}
+    />
+  );
 }
 
 /* ----------------------------- */

@@ -18,26 +18,53 @@ export const UserContext = createContext({
 function App() {
   const [appState, setAppState] = useState("Login");
   const [profiles, setProfiles] = useState([]);
-  const [currentProfile, setNextCurrentProfile] = useState({});
+  const [userProfile, setUserProfile] = useState({
+    _id: "",
+    avatar: "",
+    username: "",
+    password: "",
+    name: "",
+    age: "",
+    location: "",
+    description: ""
+  });
+  const [currentMatchProfile, setMatchProfile] = useState({
+    _id: "",
+    avatar: "",
+    username: "",
+    password: "",
+    name: "",
+    age: "",
+    location: "",
+    description: ""
+  });
 
   // Pretty hacky
   useEffect(() => {}, [profiles.length]);
 
   return (
     <div className="pa3">
-      <Container>{renderApp(appState, setAppState)}</Container>
+      <Container>{renderApp(appState, setAppState, setUserProfile)}</Container>
     </div>
   );
 }
 
-function renderApp(state, setAppState) {
+function renderApp(state, setAppState, setUserProfile) {
   switch (state) {
     case "SignUp":
-      return <SignUp setAppState={setAppState} />;
+      return (
+        <SignUp setAppState={setAppState} setUserProfile={setUserProfile} />
+      );
     case "Login":
-      return <Login setAppState={setAppState} />;
-    case "Profile":
-      return <Profile setAppState={setAppState} />;
+      return (
+        <Login setAppState={setAppState} setUserProfile={setUserProfile} />
+      );
+    case "UserProfile":
+      return <Profile setAppState={setAppState} profile={userProfile} />;
+    case "MatchProfile":
+      return (
+        <Profile setAppState={setAppState} profile={currentMatchProfile} />
+      );
     case "UserLikePage":
       return <UserLike setAppState={setAppState} />;
       return;
