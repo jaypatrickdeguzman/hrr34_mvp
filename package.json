@@ -25,6 +25,7 @@
     "faker": "^4.1.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.14",
+    "morgan": "^1.9.1",
     "mongoose-simple-random": "^0.4.1",
     "nodemon": "^1.18.7",
     "pg": "^7.6.1"
@@ -43,7 +44,6 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "html-webpack-plugin": "^3.2.0",
     "mongodb-memory-server": "^2.6.2",
-    "morgan": "^1.9.1",
     "uglifyjs": "^2.4.11",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.22.0",
