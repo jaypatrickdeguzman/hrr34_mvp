@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(bodyParser());
 
 /* -------------------------------------- */
-/*                  API                   */
+/*                   API                  */
 /* -------------------------------------- */
 
 app.use(express.static(path.join(__dirname, "../src/dist")));
