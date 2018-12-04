@@ -14,7 +14,7 @@ function createProfile() {
       avatar: faker.image.avatar(),
       username: faker.internet.userName(),
       password: faker.internet.password(),
-      description: faker.lorem.sentence(),
+      description: quotes[rand(0, 15)],
       location: faker.address.state(),
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       age: rand(21, 30),
@@ -22,6 +22,23 @@ function createProfile() {
     };
   });
 }
+
+const quotes = [
+  "Cheese makes me fart...",
+  "Kangaroos are scary...",
+  "I see dead people...",
+  "I swear I'm not an alcoholic...",
+  "Single and ready to mingle...",
+  "Do you lift bro?",
+  "Life is like a box of chocolates...",
+  "I have $5 in the bank...",
+  "Good vibes errday!",
+  "I start my Mondays with wine...",
+  "Adulting is hard...",
+  "Android all the way!",
+  "Apple all the way!",
+  "I have a six-pack.. Of Beer."
+];
 
 const profiles = createProfile();
 
