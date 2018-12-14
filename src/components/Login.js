@@ -19,7 +19,6 @@ function Login({ setUserProfile, setAppState }) {
         }
       });
     console.log(`Username: ${username.value}, Password: ${password.value}`);
-    // resp.status === 404 ? setIsUserExist(false) : setUser(resp.user);
   }
 
   return (

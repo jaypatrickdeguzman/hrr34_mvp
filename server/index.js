@@ -8,7 +8,6 @@ const controller = require("./controller");
 
 const app = express();
 app.use(cors());
-// app.use(morgan("dev"));
 app.use(bodyParser());
 
 /* -------------------------------------- */
@@ -64,17 +63,6 @@ app.post("api/likeuser", (req, res) => {
       console.log(err);
     });
 });
-
-// app.delete("api/deleteuser", (req, res) => {
-//   controller
-//     .deleteUser(req.body)
-//     .then(succ => {
-//       console.log(succ);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
 
 const PORT = process.env.PORT || 1337;
 
