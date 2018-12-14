@@ -6,14 +6,11 @@ import React, {
   Suspense
 } from "react";
 import Container from "./Container";
+import Profile from "./Profile";
+import Loader from "./Loader";
 const Login = lazy(() => import("./Login"));
 const SignUp = lazy(() => import("./SignUp"));
-// const Profile = lazy(() => {
-//   import("./Profile");
-// });
-import Profile from "./Profile";
 const UserLike = lazy(() => import("./UserLike"));
-import Loader from "./Loader";
 import networkReq from "../lib/signin";
 
 export const UserContext = createContext({
@@ -130,7 +127,7 @@ function renderApp(
       );
       return;
     default:
-      console.error("Something is fucked...");
+      console.error("State incorrect");
   }
 }
 

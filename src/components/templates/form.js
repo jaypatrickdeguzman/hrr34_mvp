@@ -123,21 +123,4 @@ function signUp(e, payload, setAppState, setUserProfile) {
     });
 }
 
-/*
-      <header className="tc pv4 ph4 pv3-ns">
-        <a
-          className="f3 grow link dim fl br4 ba ph3 pv2 mb2 mid-gray"
-          href="#0"
-        >
-          Back
-        </a>
-        <a
-          className="f3 grow link dim fr br4 ba ph3 pv2 mb2 mid-gray"
-          href="#0"
-        >
-          Delete
-        </a>
-      </header>
-*/
-
 export default Form;
