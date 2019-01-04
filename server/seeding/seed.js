@@ -44,9 +44,6 @@ const quotes = [
 ];
 
 function seedDB() {
-  // Profile.create(profiles)
-  //   .then(() => mongoose.connection.close())
-  //   .catch(err => console.error(err));
   let writableStream = fs.createWriteStream("profiles.csv");
   writableStream.on("finish", () => {
     console.log("DONE!");
