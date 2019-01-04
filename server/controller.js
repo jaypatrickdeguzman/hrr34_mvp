@@ -22,8 +22,6 @@ module.exports = {
     return await Profile.findOneAndUpdate(query, { likes: newLikeCount });
   },
   async createUser(user) {
-    // working
-    console.log("User: ", user);
     let newUser = new Profile({
       _id: new mongoose.Types.ObjectId(),
       avatar: user.avatar,
@@ -38,8 +36,6 @@ module.exports = {
     return await newUser.save();
   },
   async getUser({ userName, password }) {
-    // working
-    console.log(userName, " ", password);
     return await Profile.findOne({ username: userName, password });
   },
   async getMatches(cb) {
@@ -50,7 +46,6 @@ module.exports = {
     });
   },
   async deleteUser({ _id }) {
-    // working
     return await Profile.deleteOne({ _id: _id });
   }
 };
